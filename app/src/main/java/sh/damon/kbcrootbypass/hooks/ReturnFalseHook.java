@@ -1,4 +1,4 @@
-package sh.damon.kbcrootbypass;
+package sh.damon.kbcrootbypass.hooks;
 
 import de.robv.android.xposed.XC_MethodHook;
 

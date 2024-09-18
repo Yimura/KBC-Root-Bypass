@@ -6,6 +6,8 @@ import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.damon.kbcrootbypass.hooks.AnalyticsHook;
+import sh.damon.kbcrootbypass.hooks.ReturnFalseHook;
 
 public class KbcRootBypass implements IXposedHookLoadPackage {
     final String TAG = this.getClass().getName();
