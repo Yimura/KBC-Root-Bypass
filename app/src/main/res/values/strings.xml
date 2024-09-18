@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KBC Root Bypass</string>
+
+    <string-array name="supported_packages">
+        <item>com.kbc.mobile.android.phone.kbc</item>
+    </string-array>
+</resources>
