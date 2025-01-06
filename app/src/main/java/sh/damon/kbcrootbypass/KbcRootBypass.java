@@ -24,17 +24,17 @@ public class KbcRootBypass implements IXposedHookLoadPackage {
         hookMethods(lpparam.classLoader);
     }
 
-    private void hookMethods(ClassLoader classLoader) {
+    private void hookMethods(ClassLoader classLoader) throws Throwable {
         XposedBridge.log("Attempting to hook methods.");
 
-        XposedHelpers.findAndHookMethod("o.setAnalytics", classLoader, "read", Context.class, new AnalyticsHook());
+        // search for "rootDetails" or "rootHiders" strings
+        XposedHelpers.findAndHookMethod("o.CapturePresenteruploadDocumentMedia12", classLoader, "read", android.content.Context.class, new AnalyticsHook());
 
-        XposedHelpers.findAndHookMethod("o.setSmsNotificationAllowed", classLoader, "write", new ReturnFalseHook());
+        // search "/system/app/Superuser.apk" or "test-keys"
+        XposedHelpers.findAndHookMethod("o.isShowAppointment", classLoader, "write", new ReturnFalseHook());
 
-        final String weirdClass = "o.r8lambdafUieMBRcNBmlgxIKf_w_5HybxO8";
-        XposedHelpers.findAndHookMethod(weirdClass, classLoader, "AudioAttributesCompatParcelizer", new ReturnFalseHook());
-        XposedHelpers.findAndHookMethod(weirdClass, classLoader, "read", new ReturnFalseHook());
-        XposedHelpers.findAndHookMethod(weirdClass, classLoader, "RemoteActionCompatParcelizer", new ReturnFalseHook());
+        // new String[]{"/system/xbin/which", "su"};
+        XposedHelpers.findAndHookMethod("o.GameDetailActivityCompanion", classLoader, "read", new ReturnFalseHook());
 
         XposedBridge.log("Finished hooking methods.");
     }
